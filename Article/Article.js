@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'New Article',
+    date: 'Oct 2nd, 2019',
+    firstParagraph: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque aliquam maxime, nesciunt fuga facilis earum eum animi dicta perspiciatis autem, debitis nostrum dolorem quae sed repudiandae. Excepturi, quod amet.Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque aliquam maxime, nesciunt fuga facilis earum eum animi dicta perspiciatis autem, debitis nostrum dolorem quae sed repudiandae. Excepturi, quod amet.Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque aliquam maxime, nesciunt fuga facilis earum eum animi dicta perspiciatis autem, debitis nostrum dolorem quae sed repudiandae. Excepturi, quod amet.`,
+
+    secondParagraph: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque aliquam maxime, nesciunt fuga facilis earum eum animi dicta perspiciatis autem, debitis nostrum dolorem quae sed repudiandae. Excepturi, quod amet.Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque aliquam maxime, nesciunt fuga facilis earum eum animi dicta perspiciatis autem, debitis nostrum dolorem quae sed repudiandae. Excepturi, quod amet.Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque aliquam maxime, nesciunt fuga facilis earum eum animi dicta perspiciatis autem, debitis nostrum dolorem quae sed repudiandae. Excepturi, quod amet.`,
+
+    thirdParagraph: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque aliquam maxime, nesciunt fuga facilis earum eum animi dicta perspiciatis autem, debitis nostrum dolorem quae sed repudiandae. Excepturi, quod amet.Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque aliquam maxime, nesciunt fuga facilis earum eum animi dicta perspiciatis autem, debitis nostrum dolorem quae sed repudiandae. Excepturi, quod amet.Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque aliquam maxime, nesciunt fuga facilis earum eum animi dicta perspiciatis autem, debitis nostrum dolorem quae sed repudiandae. Excepturi, quod amet.`
   }
 ];
 
@@ -112,3 +121,45 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createComp(title,date,firstParagraph,secondParagraph,thirdParagraph){
+
+const article = document.createElement('div');
+const articletitle = document.createElement('h2');
+const articledate = document.createElement('p');
+const paragraph1 = document.createElement('p');
+const paragraph2 = document.createElement('p');
+const paragraph3 = document.createElement('p');
+const btn = document.createElement('span');
+
+article.appendChild(articletitle)
+article.appendChild(articledate)
+article.appendChild(paragraph1)
+article.appendChild(paragraph2)
+article.appendChild(paragraph3)
+article.appendChild(btn)
+
+article.classList.add('article')
+articledate.classList.add('date')
+btn.classList.add('expandButton')
+
+articletitle.textContent = title
+articledate.textContent = date
+paragraph1.textContent = firstParagraph
+paragraph2.textContent = secondParagraph
+paragraph3.textContent = thirdParagraph
+btn.textContent = "open/close article here"
+
+btn.addEventListener('click',e=>{
+  article.classList.toggle('article-open')
+});
+
+return article;
+
+};
+
+const articles = document.querySelector('.articles')
+
+data.map(d => {
+  articles.appendChild(createComp(d.title,d.date,d.firstParagraph,d.secondParagraph,d.thirdParagraph))
+});
