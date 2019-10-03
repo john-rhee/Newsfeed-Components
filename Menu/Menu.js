@@ -43,7 +43,11 @@ function createMenu(array){
 
   menu.classList.add('menu')
 
-  ul.textContent = array
+  menuItems.forEach(d => {
+    let li = document.createElement('li');
+    li.textContent = d;
+    ul.appendChild(li);
+  });
 
   const button = document.querySelector('.menu-button');
 
